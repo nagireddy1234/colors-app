@@ -4,7 +4,6 @@ import './Palette.css';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
 
-
 export default class Palette extends Component {
   state={
     level:500,
@@ -24,7 +23,7 @@ export default class Palette extends Component {
     const {colors,paletteName,emoji,id}=this.props.palette;
     const {level, format}=this.state;
     const ColorBoxes = colors[level].map(color=> {
-      return (<ColorBox background={color[format]} name={color.name} key={color.id} paletteId={id} colorId={color.id} ShowLink={true} />)
+      return (<ColorBox background={color[format]} name={color.name} key={color.id} paletteId={id} colorId={color.id} ShowingFullPalette ={true} />)
     }) 
     return (
       <div className="Palette">
