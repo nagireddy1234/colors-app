@@ -7,7 +7,7 @@
   height:90%;
 }
 .palette-footer{
-  background-color: #fff;
+  background-color: red;
   height: 4vh;
   display: flex;
   justify-content: flex-end;
