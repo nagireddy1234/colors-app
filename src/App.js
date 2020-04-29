@@ -11,6 +11,8 @@ import SingleColorPalette from './SingleColorPalette'
 
 export default class App extends Component {
 
+  
+
   findPalette = (id)=> {
     return seedColors.find((palette)=>{
       return palette.id===id;  
