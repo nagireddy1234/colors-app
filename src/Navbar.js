@@ -10,7 +10,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 import 'rc-slider/assets/index.css';
 import styles from './Styles/NavbarStyles';
-// import './Navbar.css';
 
 class Navbar extends Component {
   state={
@@ -75,9 +74,7 @@ class Navbar extends Component {
             </IconButton>
           </React.Fragment>
         }
-      />
-
-        
+      />     
       </header>
     )
   }

@@ -18,9 +18,12 @@ export default {
     display:"flex",
     width:"100%",
     justifyContent:"space-between",
+    flexDirection:"row",
+    alignItems: "center",
     color:"#fff",
-    "& h1":{
-      color: "#000"
+    "& a":{
+      textDecoration:"none",
+      color:"#fff"
     }
   },
   palettesStyles: {

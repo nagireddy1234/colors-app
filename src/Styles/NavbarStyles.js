@@ -40,9 +40,9 @@ export default {
       marginLeft: "-7px",
       marginTop: "-3px"
     },
-  selectContainer: {
-    marginLeft: "auto",
-    marginRight: "1rem"
+  selectContainer:{
+    marginLeft: "auto !important",
+    marginRight: "1rem !important",
   }
 }
 }
