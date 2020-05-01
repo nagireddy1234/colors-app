@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
+import DraggableColorBox from './DraggableColorBox';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -56,6 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
+    height:"calc(100vh - 64px)",
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -72,10 +74,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function NewPaletteForm (){
+function NewPaletteForm() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  const [currentColor, setcurrentColor] = useState("purple");
+  const [ColorList, setColorList] = useState(["red","purple","green"])
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -84,8 +90,19 @@ function NewPaletteForm (){
   const handleDrawerClose = () => {
     setOpen(false);
   };
-    return (
-      <div className={classes.root}>
+
+  const UpdateCurrentColor = (currentColor) =>{
+    setcurrentColor(currentColor.hex)
+  }
+  const AddNewColor = () => {
+    // console.log(currentColor)
+    // console.log({...ColorList})
+     setColorList([...ColorList,
+       currentColor])
+  }
+  console.log(ColorList)
+  return (
+    <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -102,10 +119,10 @@ function NewPaletteForm (){
             className={clsx(classes.menuButton, open && classes.hide)}
           >
             <MenuIcon />
-            <Typography variant="h6" noWrap>
+          </IconButton>
+          <Typography variant="h6" noWrap>
             Persistent drawer
           </Typography>
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -119,22 +136,22 @@ function NewPaletteForm (){
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction =<ChevronLeftIcon /> }
+            {theme.direction = <ChevronLeftIcon />}
           </IconButton>
-        </div> 
+        </div>
         <Divider />
         <Typography variant="h4" > Design your Palette   </Typography>
         <div>
-        <Button variant="contained" color="primary">
-        Clear Palette
+          <Button variant="contained" color="primary">
+            Clear Palette
         </Button>
-       <Button variant="contained" color="secondary">
-        Random Color
+          <Button variant="contained" color="secondary">
+            Random Color
         </Button>
         </div>
-        <ChromePicker color="#fff" onChangeComplete={(newColor)=> console.log(newColor)}/>
-        <Button variant="contained" color="secondary">
-        Add Color
+        <ChromePicker color={currentColor} onChangeComplete={UpdateCurrentColor} />
+        <Button variant="contained" color="primary" style={{background:currentColor}} onChange={UpdateCurrentColor} onClick={AddNewColor} >
+          Add Color
         </Button>
       </Drawer>
       <main
@@ -143,13 +160,12 @@ function NewPaletteForm (){
         })}
       >
         <div className={classes.drawerHeader} />
-        <Typography paragraph>
-          Hello New PaletteForm
-        </Typography>
-
+     
+      {ColorList.map((color,index) => <DraggableColorBox key={index} color={color} />)}
+      
       </main>
     </div>
-    )
-  }
+  )
+}
 
- export default NewPaletteForm;
+export default NewPaletteForm;
