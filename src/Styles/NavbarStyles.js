@@ -1,3 +1,4 @@
+import sizes from "./sizes";
 
 export default {
   Navbar: {
@@ -19,6 +20,9 @@ export default {
       textDecoration: "none",
       color: "black"
     },
+    [sizes.down("xs")]: {
+      display: "none"
+    }
   },
   slider: {
     width: "340px",
@@ -40,9 +44,12 @@ export default {
       marginLeft: "-7px",
       marginTop: "-3px"
     },
-  selectContainer:{
-    marginLeft: "auto !important",
-    marginRight: "1rem !important",
+    [sizes.down("sm")]: {
+      width: "150px"
+    }
+  },
+  selectContainer: {
+    marginLeft: "auto",
+    marginRight: "1rem"
   }
-}
-}
+};

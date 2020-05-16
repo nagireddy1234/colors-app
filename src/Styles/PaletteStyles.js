@@ -1,11 +1,11 @@
-
+import sizes from "./sizes";
 export default {
-  Palette:{
+  Palette: {
     height: "100vh",
     display: "flex",
     flexDirection: "column"
   },
-  PaletteColors: {
+  colors: {
     height: "90%"
   },
   goBack: {
@@ -19,7 +19,7 @@ export default {
     opacity: 1,
     backgroundColor: "black",
     "& a": {
-      color: "white", 
+      color: "white",
       width: "100px",
       height: "30px",
       position: "absolute",
@@ -37,5 +37,17 @@ export default {
       border: "none",
       textDecoration: "none"
     },
+    [sizes.down("lg")]: {
+      width: "25%",
+      height: "33.3333%"
+    },
+    [sizes.down("md")]: {
+      width: "50%",
+      height: "20%"
+    },
+    [sizes.down("xs")]: {
+      width: "100%",
+      height: "10%"
+    }
   }
-}
+};
